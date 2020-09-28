@@ -11,8 +11,10 @@ Submit your designated programs and/or files in the corresponding folder. Please
 * Assignment 3
 * Assignment 4
 
-The name of every program should be (Prog)(#Assignment number)_(#Program number in the assignment).(extension)  
+`The name of every program should be (Prog)(#Assignment number)_(#Program number in the assignment).(extension)`<br />
+`Examples: Prog1_2.py, Prog3_4.java`
 
-Examples: Prog1_2.py, Prog3_4.java  
+_Replace the programs that have been included as a basic template with your own._
 
-In case of Java codes, you don't need to include the .class files. _Replace the programs that have been included as a basic template with your own._
+In case of Java codes, you don't need to include the .class files.<br />
+In case of Python codes, don't include the .pyc files.
