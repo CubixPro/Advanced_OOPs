@@ -1,40 +1,56 @@
 
+myServer = {
+    "server1" : 
+    {
+        "name" : "AWS",
+        "IPv4" : "10.10.100.80",
+        "port" : [80,234,443]
+    },
 
-def mySort(**kwargs):
-    # this function sorts a list of integers
-    myList = []
-    sortType = False # False for ascending order sorting
-    count = 0
-    for key, value in kwargs.items():
-        if count == 0: 
-            myList = value
-            count += 1
-        else: sortType = value
-    
-    n = len(myList)
-    #simple bubble sort
-    for i in range(n-1):
-        for j in range(0, n-i-1):
-            if myList[j] > myList[j+1]:
-                myList[j], myList[j+1] = myList[j+1],myList[j]
+    "server2":
+    {
+        "name" : "GCP",
+        "IPv4" : "45.87.78.128",
+        "port" : [80,234,443]
+    },
 
-    # reverse the string if the sortType bit is set
-    if sortType: myList.reverse()
-    if sortType: print("sorted in descending order: ")
-    else: print("Sorted in ascending order: ")
-    print(myList)
+    "server3" : 
+    {
+        "name" : "Linode",
+        "IPv4" : "170.10.251.84",
+        "port" : [80,234,443]
+    },
 
+    "server4" : 
+    {
+        "name" : "Azure",
+        "IPv4" : "172.230.105.200",
+        "port" : [80,234,443]
+    },
+
+    "server5" : 
+    {
+        "name" : "Digital Ocean",
+        "IPv4" : "20.60.172.01",
+        "port" : [80,234,443]
+    },
+
+    "server6" : 
+    {
+        "name" : "LocalHost",
+        "IPv4" : "127.0.0.1",
+        "port" : [80,234,443]
+    }
+}
+
+# this function just shows the all server details
+def printServers(**kwargs):
+    for server, details in kwargs.items():
+        print("\nserver name: {}".format(details["name"]))
+        print("server IPv4 address: {}".format(details["IPv4"]))
+        print("server open port: {}".format(details["port"]))
+        print("\n#############################")
 
 if __name__ == "__main__":
 
-    myList = []
-    n = int (input("Enter a number: "))
-    print("Enter {} number(s): ".format(n))
-
-    for i in range(0,n):
-        x = int(input())
-        myList.append(x)
-    
-    kwargs = {"list":myList, "type": True}
-    mySort(**kwargs)
-
+    printServers(**myServer)
