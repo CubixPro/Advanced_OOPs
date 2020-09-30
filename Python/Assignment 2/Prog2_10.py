@@ -19,6 +19,7 @@ class MyString:
             if count>=3:
                 for ch in words[count-3]:
                     length+=1
+            length+=count-1
             return length
 
 myString = MyString('Hello i am 42 years old')
