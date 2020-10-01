@@ -1,33 +1,36 @@
-class MyString:
-    def __init__(self,s):
-        self.str=s
-    def __len__(self):
-        length=len(self.str)
-        words=list(self.str.split())
-        freq = {} 
-        for item in words: 
-            if item in freq: 
-                freq[item] += 1
-            else: 
-                freq[item] = 1
-        for key,value in freq.items():
-            if value>1:
-                print("{0} : {1}".format(key,len(key)))
-        return length
-    def most_common(self):
-        words=list(self.str.split())
-        freq = {} 
-        for item in words: 
-            if item in freq: 
-                freq[item] += 1
-            else: 
-                freq[item] = 1
-        ans,f="",-1
-        for key,value in freq.items():
-            if value>f:
-                f,ans=value,key
-        return ans
+# To flatten the dict, we've to 
+# recursively traverse and check 
+# if there's a key : dict mapping
+# if so, fix that
+# if not return a prefix : d
 
-myString = MyString('Hello i am a geeks for geeks follower')
-print(len(myString))
-print(myString.most_common())
+def flatten(d, prefix=""):
+    if isinstance(d, dict):
+        newDict = {}
+        for k, v in d.items():
+            getDict = flatten(v, prefix+"_"+k if prefix != "" else k)
+            for kk, vv in getDict.items():
+                newDict[kk] = vv
+        return newDict
+    else :
+        return {prefix: d}
+
+# example dict
+mydict = {
+    "fullname" : "Alessandra",
+    "age" : 41,
+    "phone_numbers" : ["+447421234", "+9910938383"],
+    "residence" : {
+        "address" : "Alexindra Road",
+        "second_line" : "Nothing Special",
+        "zip" : "YOHERE",
+        "city" : "London",
+        "country" : "UK"
+    }
+}
+
+# Flatten the above dict
+newdict = flatten(mydict)
+
+# Print the flattened dict
+print(newdict)
