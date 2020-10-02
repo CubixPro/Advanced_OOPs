@@ -45,6 +45,7 @@ myServer = {
 
 # this function just shows the all server details
 def printServers(**kwargs):
+
     for server, details in kwargs.items():
         print("\nserver name: {}".format(details["name"]))
         print("server IPv4 address: {}".format(details["IPv4"]))

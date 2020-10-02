@@ -34,7 +34,8 @@ if __name__ == "__main__":
     for i in range(0,n):
         x = int(input())
         myList.append(x)
-    
+
     kwargs = {"list":myList, "type": True}
+   
     mySort(**kwargs)
 
