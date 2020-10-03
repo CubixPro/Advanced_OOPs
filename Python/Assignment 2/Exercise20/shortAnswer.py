@@ -26,7 +26,7 @@ class ShortAnswer(Problem):
         return self.answer
 
    
-class FillInTheBlack(ShortAnswer):
+class FillInTheBlank(ShortAnswer):
     ''' Model a Fill in the Blank question '''
 
     ''' Overrided Function from ShortAnswer parent with necessary Modification'''
@@ -70,7 +70,7 @@ if __name__ == "__main__":
     assert not (q.check_answer('ans'))
     assert q.check_answer('answer')
 
-    q = FillInTheBlack('question', 'answer')
+    q = FillInTheBlank('question', 'answer')
     assert q.get_text() == 'question'
     assert q.get_answer() == 'answer'
     assert q.ask_question() == 'question\nFill in the blank.'
