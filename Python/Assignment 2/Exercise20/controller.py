@@ -1,7 +1,6 @@
 '''
-Created Fall 2014
 
-@author: smn4
+@author: < add your name here >
 '''
 from tkinter import *
 from quiz import Quiz
