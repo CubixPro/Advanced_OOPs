@@ -1,8 +1,4 @@
-'''
-Created Fall 2014
 
-@author: smn4
-'''
 
 from shortAnswer import ShortAnswer, TrueFalse, FillInTheBlack
 import random
