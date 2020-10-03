@@ -20,7 +20,7 @@ def matrixMultiplication(mat1, mat2):
         for i in range(row1):
             for j in range(col2):
                 for k in range(row2):
-                    result[i][j] += mat1[i][k] + mat2[k][j]
+                    result[i][j] += mat1[i][k] * mat2[k][j]
 
         for row in result:
             print(row)
