@@ -6,6 +6,9 @@ class BankAcct{
 	static void initRate(double val){
 		rate = val;
 	}
+	static void changeRate(double val){
+		rate = val;
+	}
 	static void displayRate(){
 		System.out.println("Rate : " + rate);
 	}
@@ -25,6 +28,8 @@ class BankAcct{
 		long  accnum = 17892;
 		BankAcct b1 = new BankAcct(accnum, 50000.0);
 		b1.initRate(5);
+		b1.calcInterest();
+		b1.changeRate(7);
 		b1.calcInterest();
 	}
 	
