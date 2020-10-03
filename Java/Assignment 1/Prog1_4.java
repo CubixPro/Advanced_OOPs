@@ -9,7 +9,7 @@ class Prog1_4
 		Scanner s= new Scanner(System.in);
 		System.out.println("Enter radius: ");
 		double r= s.nextInt();
-		double a= r*r*Circle.PI;
+		double a= r*r*PI;
 		System.out.println("Area: "+a);
 	}
 }
