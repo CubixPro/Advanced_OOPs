@@ -1,6 +1,6 @@
 
 
-from shortAnswer import ShortAnswer, TrueFalse, FillInTheBlack
+from shortAnswer import ShortAnswer, TrueFalse, FillInTheBlank
 import random
 
 class Quiz:
@@ -14,7 +14,7 @@ class Quiz:
         self.problems.append(ShortAnswer('What is the hottest recorded temperature in the United States', '134'))
         self.problems.append(ShortAnswer('Independence Day of India', '1947'))
         self.problems.append(TrueFalse('Sky is Blue', True))
-        self.problems.append(FillInTheBlack('___ is the capital of India', 'New Delhi'))
+        self.problems.append(FillInTheBlank('___ is the capital of India', 'New Delhi'))
         random.shuffle(self.problems)
         
         self.problemNum = 0
