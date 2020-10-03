@@ -1,108 +1,132 @@
-import java.util.Scanner;
+class Id {
+    int id = 0;
 
-class Var {
-    int activeReaders;
-    int val;
+    synchronized int assignId() {
+        id++;
+        return id;
+    }
+}
 
-    public Var() {
-        activeReaders = 0;
-        val = 0;
+class Value {
+    int num = 0;
+    int activeReaders = 0;
+    boolean activeWriter = false;
+
+    synchronized void decRead() {
+        activeReaders--;
     }
 
-    public void read(int num) {
+    synchronized void incRead() {
+        activeReaders++;
+    }
+
+   void activateWriter() {
+        activeWriter = true;
+    }
+
+    void deactivateWriter() {
+        activeWriter = false;
+    }
+
+    public void read(int id) {
         synchronized(this) {
-            activeReaders++;
-            System.out.println("Reader " + num + " starts reading.");
-            System.out.println("Current Value : " + val);
+            while(activeWriter == true) {
+                try {
+                    wait();
+                } catch (InterruptedException e) {
+    
+                }
+            }
         }
         
-        try {
-            Thread.sleep((int)(Math.random() * 5000));
-        }
-        catch(InterruptedException e) {}
-
-        synchronized(this) {
-            System.out.println("Reader " + num + " stops reading.");
-            activeReaders--;
-            if(activeReaders == 0) this.notifyAll();
-        }
+        incRead();
+        System.out.println("Reader id :: " + id + " starts reading");
+        System.out.println("Reader id :: " + id + " stops reading with num = " + num);
+        decRead();
     }
-    
-    public synchronized void write(int num) {
-        while(activeReaders != 0) {
+
+    synchronized void write(int id) {
+        while(activeReaders > 0) {
             try {
                 wait();
-            } catch(InterruptedException e) {}
+            } catch (InterruptedException e) {
+
+            }
         }
 
-        System.out.println("Writer " + num + " starts writing.");
-        this.val = (int)(Math.random() * 5000);
-
-        try {
-            Thread.sleep((int)(Math.random() * 5000));
-        } catch(InterruptedException e) {}
-
-        System.out.println("Value after write : " + val);
-        System.out.println("Writer " + num + " stops writing.");
+        activateWriter();
+        System.out.println("Writer id :: " + id + " starts writing");
+        num++;
+        System.out.println("Writer id :: " + id + " stops writing");  
+        deactivateWriter();      
     }
 }
 
 class Reader extends Thread {
-    static int readers = 0;
-    Var v;
-    int num;
+    Value n;
+    Id id;
 
-    public Reader(Var v) {
-        this.v = v;
-        num = Reader.readers++;
+    public Reader(Value n, Id id) {
+        this.n = n;
+        this.id = id;
     }
 
-    @Override
     public void run() {
-        try {
-            Thread.sleep((int)(Math.random() * 5000));
-        } catch(InterruptedException e) {}
-
-        v.read(num);
+        while(true) {
+            try {
+                Thread.sleep((int)(Math.random()%5000 + 3000));
+            } catch (InterruptedException e) {
+    
+            }
+    
+            n.read(id.assignId());
+        }
     }
 }
 
 class Writer extends Thread {
-    static int writers = 0;
-    Var v;
-    int num;
+    Value n;
+    Id id;
 
-    public Writer(Var v) {
-        this.v = v;
-        num = Writer.writers++;
+    public Writer(Value n, Id id) {
+        this.n = n;
+        this.id = id;
     }
 
-    @Override
     public void run() {
-        try{
-            Thread.sleep((int)(Math.random() * 5000));
-        } catch(InterruptedException e) {}
-        
-        v.write(num);
+        while(true) {
+            try {
+                Thread.sleep((int)(Math.random())%2000 + 1000);
+            } catch (InterruptedException e) {
+    
+            }
+    
+            n.write(id.assignId());
+        }
     }
 }
 
 public class Prog4_3 {
-    public static void main(String[] args) {
-        Var obj = new Var();
-        int numOfWriters , numOfReaders;
-        Scanner in = new Scanner(System.in);
+    public static void main(String args[]) {
+        Value n = new Value();
+        Id id = new Id();
+        Reader reader1 = new Reader(n, id);
+        Reader reader2 = new Reader(n, id);
+        Writer writer1 = new Writer(n, id);
+        Writer writer2 = new Writer(n, id);
 
-        System.out.println("Enter num of Writers and Readers : ");
-        numOfWriters = Integer.parseInt(in.nextLine());
-        numOfReaders= Integer.parseInt(in.nextLine());
+       reader1.start();
+       reader2.start();
+       writer1.start();
+       writer2.start();
 
-        for(int i = 0; i < numOfReaders; i++) {
-            new Reader(obj).start();
-        }
+       try {
+        reader1.join();
+        reader2.join();
+        writer1.join();
+        writer2.join();
+       } catch(InterruptedException e) {
 
-        for(int i = 0; i < numOfWriters; i++) {
-            new Writer(obj).start();
-        }
+       }
     }
 }
