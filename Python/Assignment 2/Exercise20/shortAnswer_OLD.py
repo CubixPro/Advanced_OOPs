@@ -1,8 +1,6 @@
 '''
-Models a short answer problem
-Created Fall 2014
 
-@author: smn4
+@author: < insert your name >
 '''
 
 class ShortAnswer:
