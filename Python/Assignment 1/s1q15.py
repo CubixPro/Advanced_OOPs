@@ -90,7 +90,7 @@ def convert_to_words(num):
  
 if __name__ == "__main__":
     
-    L = ["Dummy lines\n", "19\n", "221 B\n", "paosask jn 47 aslas\n"] 
+    L = ["Dummy lines\n", "229\n", "899 B\n", "pakhtdxky rdjxn 786 kxulruts\n"] 
       
     # writing to file 
     file1 = open('myfile.txt', 'w') 

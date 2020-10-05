@@ -8,7 +8,7 @@ class square:
         return self.n*self.n
 
 # Print the square 
-a = int(input("a = "))
+a = int(input("Enter a number = "))
 sq = square(a)
 
 print("Square is ::", sq.getSquare())

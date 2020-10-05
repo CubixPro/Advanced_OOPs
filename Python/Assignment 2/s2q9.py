@@ -16,17 +16,17 @@ class Person:
         self.__age=value
     @name.deleter
     def name(self):
-        print('Deleting name property')
+        print('Name property deleted')
         del self.__name
     @age.deleter
     def age(self):
-        print('Deleting Age property')
+        print('Age property deleted')
         del self.__age
 
 p=Person()
-p.name='Geek God'
+p.name='Soumalya Kundu'
 print("Name: ",p.name)
-p.age=18
+p.age= 4546
 print("Age: ",p.age)
 del p.name
 del p.age

@@ -22,8 +22,8 @@ class MyString:
             length+=count-1
             return length
 
-myString = MyString('Hello i am 42 years old')
+myString = MyString('India is now on 210th day of quarantine')
 print("Length of '{0}' : {1}".format(myString.str,len(myString)))
 
-myString = MyString('Helloiam42yearsold')
+myString = MyString('But also we have to submit inhuman task')
 print("Length of '{0}' : {1}".format(myString.str,len(myString)))                

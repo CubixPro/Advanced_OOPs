@@ -16,6 +16,6 @@ class Storage:
         words=set(self.text.split())
         print(words)
 
-storage=Storage('hello i am a bad boy geek for geek')
+storage=Storage('59 question in 5 days is just inhumane! ')
 storage.getPalindromes()
 storage.getUniqueWords()
