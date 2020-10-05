@@ -53,7 +53,7 @@ class Customer
 
 }
 
-public class s2q1
+public class Prog2_1
 {
     public static void main (String args[])
     {
@@ -68,4 +68,4 @@ public class s2q1
         }
 
     }
-}
+};

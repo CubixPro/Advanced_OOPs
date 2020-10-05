@@ -5,7 +5,6 @@ def getCube(n):
         yield (i+1)*(i+1)*(i+1)
 
 # Print the first 10 cubes
-print("First 10 cube numbers are: ")
 for i in getCube(10):
     print(i, end=", ")
 

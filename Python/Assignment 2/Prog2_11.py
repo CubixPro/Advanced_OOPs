@@ -28,6 +28,6 @@ class MyString:
                 f,ans=value,key
         return ans
 
-myString = MyString('Geek for Geek is the site for Geeks and love geeks')
+myString = MyString('Hello i am a geeks for geeks follower')
 print(len(myString))
 print(myString.most_common())

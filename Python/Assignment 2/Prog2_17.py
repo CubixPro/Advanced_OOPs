@@ -168,12 +168,10 @@ class FileWrapper:
 
 
 ## Tests
-filename = input("Enter the file name: ")
+filename = input()
 f = FileWrapper(filename)
-print("Special character removed!!!")
 f.removeSpecialCharacters()
-# f.removeSingleCharacters()
-# f.removeMultipleSpaces()
-# f.toLowerCase()
-#print("Converting to literals: ")
-#f.toLiterals()
+f.removeSingleCharacters()
+f.removeMultipleSpaces()
+f.toLowerCase()
+f.toLiterals()

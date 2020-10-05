@@ -11,7 +11,7 @@ def matrixMultiplication(mat1, mat2):
     if col1 != row2:
         print("matrix multiplication cannot be performed")
     elif row1 == 0 or col1 == 0 or row2 == 0 or col2 == 0 :
-        print("Multiplication cannot be performed! Row and Column mismatched! Bad Input!")
+        print("bad input! Multiplication cannot be performed")
     else:
         
         #initializing the result matrix
@@ -30,15 +30,14 @@ if __name__ == "__main__":
 
     mat1 = [
         [1,2,3],
-        [5,34,9],
-        [-23,23,0]
+        [4,5,6],
+        [7,8,9]
     ]
 
     mat2 = [
-        [-1,2,9],
-        [-3,34,45],
-        [-5,98,32],
-        [67,98,23]
+        [1,2],
+        [3,4],
+        [5,6]
     ]
 
     matrixMultiplication(mat1, mat2)
